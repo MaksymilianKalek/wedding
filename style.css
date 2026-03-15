@@ -1,0 +1,274 @@
+@font-face {
+  font-family: 'Emitha';
+  src: url('Emitha.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Balgin';
+  src: url('Balgin.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: 'Balgin', sans-serif;
+  font-size: 16px;
+  background: #fff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Full-page sections */
+.page {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 0.45s cubic-bezier(0.645, 0.045, 0.355, 1);
+  overflow-y: auto;
+}
+
+/* Section backgrounds */
+.page:nth-child(1) { background: #d4eaf7; }
+.page:nth-child(2) { background: #f0f7ee; }
+.page:nth-child(3) { background: #fdf6ec; }
+.page:nth-child(4) { background: #eef4fa; }
+.page:nth-child(5) { background: #fef0f0; }
+.page:nth-child(6) { background: #f3eef8; }
+.page:nth-child(7) { background: #ecf7f0; }
+.page:nth-child(8) { background: #fdf4e8; }
+
+.page-inner {
+  max-width: 90vw;
+  width: 100%;
+  padding: 48px 5vw;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  background: #d4eaf7;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+.hero-illustration {
+  width: 100%;
+  height: 40vh;
+  background: linear-gradient(to bottom, #b8d9f0 0%, #c8e8c0 60%, #a8d890 100%);
+  position: relative;
+  flex-shrink: 0;
+}
+
+.hero-illustration::before,
+.hero-illustration::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+  background: #7ec87e;
+}
+.hero-illustration::before {
+  width: 30%;
+  height: 50%;
+  left: 10%;
+}
+.hero-illustration::after {
+  width: 40%;
+  height: 60%;
+  right: 15%;
+  background: #5dab5d;
+}
+
+.hero-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.hero-text h1 {
+  font-family: 'Emitha', cursive;
+  font-size: 8rem;
+  font-weight: normal;
+}
+
+.hero-date {
+  margin-top: 4px;
+  font-size: 2rem;
+  color: #666;
+  letter-spacing: 0.1em;
+}
+
+/* Section headings */
+.page h2 {
+  font-family: 'Emitha', cursive;
+  font-size: 8rem;
+  font-weight: normal;
+  margin-bottom: 2px;
+}
+
+.page h2::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: #ccc;
+  margin: 4px auto 14px;
+}
+
+.page p {
+  margin-bottom: 8px;
+  color: #444;
+  font-size: 1rem;
+}
+
+.section-date {
+  font-size: 1rem;
+  color: #999;
+  margin-bottom: 16px;
+}
+
+/* Timeline (Harmonogram) */
+.timeline {
+  position: relative;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+/* center vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: #ccc;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 6px;
+  width: 100%;
+}
+
+/* dot on center line */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 6px;
+  height: 6px;
+  background: #aaa;
+  border-radius: 50%;
+  transform: translateX(-50%);
+}
+
+.timeline-item .time {
+  font-size: 1rem;
+  color: #888;
+}
+
+.timeline-item .event {
+  font-size: 1rem;
+  color: #333;
+}
+
+.timeline-item.left {
+  justify-content: flex-start;
+  padding-right: 52%;
+  text-align: right;
+  gap: 6px;
+}
+
+.timeline-item.right {
+  justify-content: flex-end;
+  padding-left: 52%;
+  text-align: left;
+  gap: 6px;
+}
+
+.timeline-item.right .time {
+  order: -1;
+}
+
+/* Link */
+.link {
+  color: #5B8FD4;
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: underline;
+}
+
+/* Color palette */
+.color-palette {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+/* Unplugged icons */
+.unplugged-icons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.icon-placeholder {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+}
+
+.emoji-placeholder {
+  background: #f5e642;
+}
+
+.camera-placeholder {
+  background: #c8c8c8;
+}
+
+/* Pinterest iframe */
+.page iframe {
+  width: 100%;
+  height: 50vh;
+  border: none;
+  border-radius: 12px;
+  margin-top: 16px;
+}
