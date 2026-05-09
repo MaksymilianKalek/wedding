@@ -10,7 +10,10 @@
 
   <!-- Hero -->
   <section class="page hero">
-    <div class="hero-illustration"></div>
+    <div class="photo-frame">
+      <img src="pics/1.jpg" alt="Klaudia i Maksymilian">
+      <div class="photo-caption">Pierwsze wspólne zdjęcie</div>
+    </div>
     <div class="hero-text">
       <h1>Klaudia i Maksymilian</h1>
       <p class="hero-date">08.08.2026</p>
@@ -86,7 +89,15 @@
     <div class="page-inner">
       <h2>Lokalizacja</h2>
       <p>Las · Bure 6 | dojazd.mp4</p>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d627.1589918249729!2d17.407293323879593!3d52.435045247683504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4704f2c59cb107e7%3A0xbc7ff4a68a7172bb!2sBure%206%2C%2062-250%20Czerniejewo!5e1!3m2!1spl!2spl!4v1773588493360!5m2!1spl!2spl" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d627.1589918249729!2d17.407293323879593!3d52.435045247683504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4704f2c59cb107e7%3A0xbc7ff4a68a7172bb!2sBure%206%2C%2062-250%20Czerniejewo!5e1!3m2!1spl!2spl!4v1773588493360!5m2!1spl!2spl" width="1200" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Image Break -->
+  <section class="image-break">
+    <div class="photo-frame">
+      <img src="pics/2.jpg" alt="Wedding detail">
+      <div class="photo-caption">Trzecia rocznia + Cytryna boiii</div>
     </div>
   </section>
 
@@ -108,7 +119,7 @@
       <p>Prosimy o nie ubieranie się na biało ani kolory pokrewne</p>
       <p>"Colorfull Garden Party Format"</p>
       <p><a href="#" class="link">Link do Pinteresta</a></p>
-      <iframe src="https://petracoding.github.io/pinterest/board.html?link=maks_kalek/vivenda/&hideHeader=0&hideFooter=0&transparent=0"></iframe>
+<iframe src="https://petracoding.github.io/pinterest/board.html?link=maks_kalek/vivenda/hideFooter=1&transparent=0"></iframe>
     </div>
   </section>
 
@@ -137,54 +148,34 @@
     </div>
   </section>
 
+  <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
   <script>
-    const pages = document.querySelectorAll('.page');
-    let current = 0;
-    let isAnimating = false;
-    let touchStartY = 0;
-
-    function updatePositions() {
-      pages.forEach((page, i) => {
-        page.style.transform = `translateY(${(i - current) * 100}vh)`;
-      });
-    }
-
-    function goTo(index) {
-      if (index < 0 || index >= pages.length || isAnimating) return;
-      isAnimating = true;
-      current = index;
-      updatePositions();
-      setTimeout(() => { isAnimating = false; }, 450);
-    }
-
-    // Mouse wheel
-    window.addEventListener('wheel', (e) => {
-      e.preventDefault();
-      if (isAnimating) return;
-      if (e.deltaY > 30) goTo(current + 1);
-      else if (e.deltaY < -30) goTo(current - 1);
-    }, { passive: false });
-
-    // Touch swipe
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      const diff = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 50) return;
-      if (diff > 0) goTo(current + 1);
-      else goTo(current - 1);
-    }, { passive: true });
-
-    // Keyboard
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowDown' || e.key === ' ') { e.preventDefault(); goTo(current + 1); }
-      if (e.key === 'ArrowUp') { e.preventDefault(); goTo(current - 1); }
+    // Smooth scrolling
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
     });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
 
-    // Init
-    updatePositions();
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('h1, h2, p, .hero-date, .timeline-item, iframe, .unplugged-icons').forEach(el => {
+      el.classList.add('reveal');
+      observer.observe(el);
+    });
   </script>
 </body>
 </html>
