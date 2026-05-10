@@ -14,7 +14,7 @@
 
 :root {
   --color-bg-primary: rgb(230, 220, 210);
-  --color-bg-secondary: rgb(145, 150, 110);
+  --color-bg-secondary: #91966e;
   --color-text-dark: #121212;
   --color-text-light: rgb(230, 220, 210);
   --color-photo-frame: #ffffff;
