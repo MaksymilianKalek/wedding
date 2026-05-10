@@ -15,7 +15,7 @@
 :root {
   --color-bg-primary: rgb(230, 220, 210);
   --color-bg-secondary: rgb(145, 150, 110);
-  --color-text-dark: #000000;
+  --color-text-dark: #121212;
   --color-text-light: rgb(230, 220, 210);
   --color-photo-frame: #ffffff;
 }
@@ -168,15 +168,16 @@ body {
   line-height: 0.6;
   position: relative;
   z-index: 10;
-  margin-top: -0.3em; /* Half of line-height (0.6) for perfect 50% overlap */
+  margin-top: -0.3em;
   white-space: nowrap;
+  color: var(--color-bg-secondary);
 }
 
-.hero-date {
-  margin-top: 4px;
-  font-size: 2rem;
-  color: var(--color-text-dark);
-  opacity: 0.8;
+.hero .hero-date {
+  margin-top: -1.5vw;
+  font-family: 'Emitha', cursive;
+  font-size: 5vw;
+  color: var(--color-bg-secondary);
   letter-spacing: 0.1em;
 }
 
