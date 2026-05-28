@@ -520,14 +520,28 @@ body {
   .split-layout {
     grid-template-columns: 1fr;
     gap: 32px;
-    text-align: center;
+    text-align: left;
+  }
+  .split-layout p,
+  .split-layout .faq-answer {
+    font-size: 0.75rem;
+  }
+  .split-layout .faq-title {
+    font-size: 0.9rem;
+  }
+  .timeline-item .time {
+    font-size: 0.75rem;
+  }
+  .timeline-item .event {
+    font-size: 0.9rem;
   }
   .split-layout h2 {
-    text-align: center;
+    text-align: left;
     position: static;
+    font-size: 5rem;
   }
   .split-content {
-    align-items: center;
+    align-items: flex-start;
   }
   .split-layout iframe {
     height: 40vh;
@@ -542,6 +556,9 @@ body {
     max-height: 60vh;
     display: block;
     margin: 0 auto;
+  }
+  .page-inner h2 {
+    font-size: 5rem;
   }
 }
 
