@@ -183,6 +183,10 @@ body {
   object-fit: cover;
 }
 
+#break-mid .photo-frame img {
+  object-position: center 25%;
+}
+
 .photo-frame {
   width: 60%;
   border-radius: 0;
